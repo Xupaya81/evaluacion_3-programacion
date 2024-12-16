@@ -1,0 +1,38 @@
+
+-- Tabla geo
+CREATE TABLE geo (
+    id_geo INT AUTO_INCREMENT PRIMARY KEY,
+    lat VARCHAR(50) NOT NULL,
+    lng VARCHAR(50) NOT NULL
+);
+
+-- Tabla addresses
+CREATE TABLE addresses (
+    id_address INT AUTO_INCREMENT PRIMARY KEY,
+    street VARCHAR(100) NOT NULL,
+    suite VARCHAR(100) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    zipcode VARCHAR(20) NOT NULL,
+    id_geo INT NOT NULL,
+    FOREIGN KEY (id_geo) REFERENCES geo(id_geo) ON DELETE CASCADE
+);
+
+-- Tabla companies
+CREATE TABLE companies (
+    id_company INT AUTO_INCREMENT PRIMARY KEY,
+    company_name VARCHAR(100) NOT NULL,
+    catchPhrase VARCHAR(200),
+    bs VARCHAR(200)
+);
+
+-- Tabla users
+CREATE TABLE users (
+    id_user INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    username VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(50),
+    website VARCHAR(100),
+    id_address INT NOT NULL,
+    id_company INT NOT NULL,
+    FOREIGN KEY (id
